@@ -57,7 +57,9 @@ if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])): ?>
 
     <?= $contentStart ?>
     <h2>Hallo <?= $name; ?>!<br />Wie geht es dir?</h2>
-    <p>Deine Zahl (<span class='fw-bold'><?= $randomNumber; ?></span>) x <span class='fw-bold'><?= $selectMulti; ?></span> (Dein auswählter Multi-Faktor) ergibt: <span class='fw-bold'><?= $finalNumber; ?></span></p>
+    <p><span class='fw-bold'><?= $randomNumber; ?></span> <span style="font-size: 11px;">
+      (Deine Zahl)</span> x <span class='fw-bold'><?= $selectMulti; ?></span> <span style="font-size: 11px;">
+      (Dein auswählter Multi-Faktor)</span> ergibt: <span class='fw-bold'><?= $finalNumber; ?></span></p>
     <?= $contentEnd ?>
 <?php endif; ?>
 
