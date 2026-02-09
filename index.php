@@ -56,10 +56,10 @@ if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])): ?>
   ?>
 
     <?= $contentStart ?>
-    <h2>Hallo <?= $name; ?>!<br />Wie geht es dir?</h2>
-    <p><span class='fw-bold'><?= $randomNumber; ?></span> <span style="font-size: 11px;">
-      (Deine Zahl)</span> x <span class='fw-bold'><?= $selectMulti; ?></span> <span style="font-size: 11px;">
-      (Dein auswählter Multi-Faktor)</span> ergibt: <span class='fw-bold'><?= $finalNumber; ?></span></p>
+    <h2>Hallo <?= $name; ?>, wie geht es dir?</h2>
+    <p class='mt-4'><span class='fw-bolder text-danger'><?= $randomNumber; ?></span> <span style="font-size: 11px;">
+      (Deine Zahl)</span> x <span class='fw-bolder text-danger'><?= $selectMulti; ?></span> <span style="font-size: 11px;">
+      (Dein auswählter Multi-Faktor)</span> ergibt: <span class='fw-bolder text-success'><?= $finalNumber; ?></span></p>
     <?= $contentEnd ?>
 <?php endif; ?>
 
