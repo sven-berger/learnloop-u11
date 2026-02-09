@@ -27,4 +27,4 @@ jobs:
           sftp_only: true
           local_path: "./"
           remote_path: "htdocs/riftcore/projects/u11/"
-          delete_remote_files: false
+          delete_remote_files: true
