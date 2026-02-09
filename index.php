@@ -11,6 +11,14 @@
       placeholder="Bitte gib deinen Namen ein."
       required
     />
+    <label class="form-label" for="multiNumber">Multi-Faktor</label>
+    <select>
+      <option name="One">1</option>
+      <option name="Two">2</option>
+      <option name="Three">3</option>
+      <option name="Four">4</option>
+      <option name="Five">5</option>
+    </select>
   </div>
 
   <div class="mb-3">
