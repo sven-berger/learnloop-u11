@@ -1,6 +1,6 @@
 <?php require_once("includes/header.php"); ?>
 
-<?= $contentStart; ?>
+<?php echo $contentStart; ?>
 <form method="POST">
   <div class="mb-3">
     <label class="form-label" for="name">Name</label>
@@ -9,7 +9,7 @@
       id="name"
       name="name"
       value="<?= htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-      placeholder="Bitte gib deinen Namen ein."
+      placeholder="Bitte gib deinen Namen ein:"
       required
     />
   </div>
@@ -24,7 +24,7 @@
       min="1"
       max="10"
       value="<?= htmlspecialchars($_POST['randomNumber'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-      placeholder="z.B. 5"
+      placeholder="z.B.  5"
       required
     />
   </div>
@@ -40,9 +40,9 @@
     </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Absenden</button>
+  <button type="submit" class="btn btn-danger">Absenden</button>
 </form>
-<?= $contentEnd; ?>
+<?php echo $contentEnd; ?>
 
 <?php
 if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])) {

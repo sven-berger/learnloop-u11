@@ -1,0 +1,32 @@
+name: Deploy RiftCore U11 to Webspace (SFTP)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload project via SFTP (SFTP-only, no remote exec)
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.SFTP_USER }}
+          server: ${{ secrets.SFTP_HOST }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+
+          # Nur SFTP, keine Remote-Commands
+          sftp_only: true
+
+          # Alles aus dem Repo hochladen
+          local_path: "./"
+
+          # Zielpfad aus Secret (z.B. /htdocs/riftcore/projects/u11/)
+          remote_path: ${{ secrets.SFTP_TARGET }}
+
+          delete_remote_files: false

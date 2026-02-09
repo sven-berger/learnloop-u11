@@ -14,14 +14,13 @@
 
   <body>
     <!-- Navigation -->
-   <?php require_once("navbar.php"); ?>
+   <?php require_once("includes/navbar.php"); ?>
     
     <!-- Hero -->
-   <?php require_once("hero.php"); ?>
+   <?php require_once("includes/hero.php"); ?>
 
     <!-- Main -->
-    <?php require_once("content.php"); ?>
-    
-    <main class="container mt-4">
+    <?php require_once("includes/content.php"); ?>
+
+    <main class="container align-items-center mt-4 p-md-5">
       <div class="row">
-        <div class="col-12 col-md-8 col-lg-6 mb-5">
