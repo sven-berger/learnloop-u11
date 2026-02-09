@@ -32,8 +32,6 @@
     Absenden
   </button>
 </form>
-
-
 <?= $contentEnd; ?>
 
 <?php if (isset($_POST['name'], $_POST['randomNumber'])): ?>
