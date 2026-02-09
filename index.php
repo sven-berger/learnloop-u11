@@ -40,7 +40,7 @@
     </select>
   </div>
 
-  <button type="submit" class="btn btn-danger">Absenden</button>
+  <button type="submit" class="btn btn-warning">Absenden</button>
 </form>
 <?php echo $contentEnd; ?>
 
