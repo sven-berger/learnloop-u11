@@ -22,5 +22,5 @@
     <!-- Main -->
     <?php require_once("includes/content.php"); ?>
 
-    <main class="container align-items-center mt-4 p-md-5">
-      <div class="row">
+    <main class="container align-items-center">
+      <div class="row m-3">
