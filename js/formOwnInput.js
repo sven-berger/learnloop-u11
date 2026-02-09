@@ -6,7 +6,7 @@ selectMulti.addEventListener("change", function () {
     if (!ownInput) {
       ownInput = document.createElement("input");
       ownInput.type = "number";
-      ownInput.name = "selectMulti"; // 🔥 WICHTIG
+      ownInput.name = "selectMulti";
       ownInput.className = "form-control mt-3";
       ownInput.placeholder = "Eigenen Multi-Faktor eingeben";
       ownInput.required = true;
