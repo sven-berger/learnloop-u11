@@ -12,6 +12,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug SFTP paths (pwd + ls)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          lftp -u "${{ secrets.SFTP_USER }},${{ secrets.SFTP_PASSWORD }}" \
+               -p "${{ secrets.SFTP_PORT }}" \
+               "sftp://${{ secrets.SFTP_HOST }}" << 'EOF'
+          set sftp:auto-confirm yes
+          pwd
+          ls
+          ls htdocs
+          ls /htdocs
+          bye
+          EOF
+
       - name: Upload project via SFTP (SFTP-only, no remote exec)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -20,13 +35,7 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
 
-          # Nur SFTP, keine Remote-Commands
           sftp_only: true
-
-          # Alles aus dem Repo hochladen
           local_path: "./"
-
-          # Zielpfad aus Secret (z.B. /htdocs/riftcore/projects/u11/)
           remote_path: ${{ secrets.SFTP_TARGET }}
-
           delete_remote_files: false
