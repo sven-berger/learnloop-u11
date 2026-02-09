@@ -32,11 +32,13 @@
   <div class="my-3">
     <label class="form-label" for="selectMulti">Multi-Faktor</label>
     <select class="form-select" id="selectMulti" name="selectMulti" required>
+      <option value="">Bitte wählen:</option>
       <option value="2">2</option>
       <option value="4">4</option>
       <option value="6">6</option>
       <option value="8">8</option>
       <option value="10">10</option>
+      <option value="ownLetter">Eigene Zahl</option>
     </select>
   </div>
 
@@ -45,24 +47,20 @@
 <?php echo $contentEnd; ?>
 
 <?php
-if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])) {
-  $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-  $randomNumber = (int) $_POST['randomNumber'];
-  $selectMulti = (int) $_POST['selectMulti'];
-
-  if ($randomNumber < 1 || $randomNumber > 10) {
-    echo $contentStart . "<p class='text-danger fw-semibold'>Zahl muss zwischen 1 und 10 liegen.</p>" . $contentEnd;
-  } elseif ($selectMulti < 2 || $selectMulti > 10) {
-    echo $contentStart . "<p class='text-danger fw-semibold'>Multi-Faktor muss zwischen 2 und 10 liegen.</p>" . $contentEnd;
-  } else {
+if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])): ?>
+  <?php
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+    $randomNumber = (int) $_POST['randomNumber'];
+    $selectMulti = (int) $_POST['selectMulti'];
     $finalNumber = $randomNumber * $selectMulti;
+  ?>
 
-    echo $contentStart;
-    echo "<h2>Hallo {$name}, wie geht es dir?</h2>";
-    echo "<p>Deine Zahl (<span class='fw-bold'>{$randomNumber}</span>) x <span class='fw-bold'>{$selectMulti}</span> ergibt: <span class='fw-bold'>{$finalNumber}</span></p>";
-    echo $contentEnd;
-  }
-}
-?>
+    <?= $contentStart ?>
+    <h2>Hallo <?= $name; ?>, wie geht es dir?</h2>
+    <p>Deine Zahl (<span class='fw-bold'><?= $randomNumber; ?></span>) x <span class='fw-bold'><?= $selectMulti; ?></span> ergibt: <span class='fw-bold'><?= $finalNumber; ?></span></p>
+    <?= $contentEnd ?>
+<?php endif; ?>
+
+
 
 <?php require_once("includes/footer.php"); ?>
