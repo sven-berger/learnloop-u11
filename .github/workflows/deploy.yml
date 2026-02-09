@@ -12,20 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug SFTP paths (pwd + ls)
+      - name: Prepare deploy files (remove git folders)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-          lftp -u "${{ secrets.SFTP_USER }},${{ secrets.SFTP_PASSWORD }}" \
-               -p "${{ secrets.SFTP_PORT }}" \
-               "sftp://${{ secrets.SFTP_HOST }}" << 'EOF'
-          set sftp:auto-confirm yes
-          pwd
-          ls
-          ls htdocs
-          ls /htdocs
-          bye
-          EOF
+          rm -rf .git
+          rm -rf .github
 
       - name: Upload project via SFTP (SFTP-only, no remote exec)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -34,8 +24,7 @@ jobs:
           server: ${{ secrets.SFTP_HOST }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
-
           sftp_only: true
           local_path: "./"
-          remote_path: ${{ secrets.SFTP_TARGET }}
+          remote_path: "htdocs/riftcore/projects/u11/"
           delete_remote_files: false
