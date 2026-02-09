@@ -11,14 +11,6 @@
       placeholder="Bitte gib deinen Namen ein."
       required
     />
-    <label class="form-label" for="multiNumber">Multi-Faktor</label>
-    <select>
-      <option name="One">1</option>
-      <option name="Two">2</option>
-      <option name="Three">3</option>
-      <option name="Four">4</option>
-      <option name="Five">5</option>
-    </select>
   </div>
 
   <div class="mb-3">
@@ -36,22 +28,35 @@
       required
     />
   </div>
+  
+  <div class="my-3">
+    <label class="form-label" for="multiNumber">Multi-Faktor</label>
+    <select class="form-select" id="selectMulti" name="selectMulti">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  
   <button type="submit" class="btn btn-primary">
     Absenden
   </button>
 </form>
 <?= $contentEnd; ?>
 
-<?php if (isset($_POST['name'], $_POST['randomNumber'])): ?>
+<?php if (isset($_POST['name'], $_POST['randomNumber'], $_POST['selectMulti'])): ?>
   <?php
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
     $randomNumber = (int) $_POST['randomNumber'];
-    $finalNumber = ($randomNumber * 10);
+    $selectMulti = (int) $_POST['selectMulti'];
+    $finalNumber = ($randomNumber * $selectMulti);
   ?>
   
   <?= $contentStart; ?>
   <h2>Hallo <?= $name; ?>, wie geht es dir?</h2>
-    <p>Deine Zahl (<?= $randomNumber; ?>) x 10 ergibt: <?= $finalNumber; ?></p>
+    <p>Deine Zahl (<span class="fw-bold"><?= $randomNumber; ?></span>) x <span class="fw-bold"><?= $selectMulti; ?></span> (Deine ausgewählte Zahl) ergibt: <?= $finalNumber; ?></p>
   <?= $contentEnd; ?>
 <?php endif; ?>
 
