@@ -23,4 +23,4 @@
     <?php require_once("includes/content.php"); ?>
 
     <main class="container align-items-center">
-      <div class="row m-3">
+      <div class="row m-2">
